@@ -5,3 +5,6 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
     
+@app.route("/html_tag")
+def html_tag():
+    return "<h1>Hello flask!!!</h1>"
