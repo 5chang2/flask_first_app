@@ -81,5 +81,33 @@ def summoner():
     game_result = soup.select('.GameResult')
     for game in game_result:
         print(game.text.strip())
+    
+    f = open("list.txt", 'a+')
+    for i in range(1, 11):
+        data = "hihi"
+        f.write(data)
+    f.close()
+    
+    
+    import csv
+    import datetime
+
+    f = open('output.csv', 'a+', encoding='utf-8', newline='')
+    wr = csv.writer(f)
+    wr.writerow([win,lose,datetime.datetime.now()])
+    f.close()
+    
     return render_template("summoner.html" ,win = win, lose = lose)
     
+    
+@app.route('/rank')
+def rank():
+    import csv
+ 
+    f = open('output.csv', 'r', encoding='utf-8')
+    rank = csv.reader(f)
+    # for line in rank:
+    #     print(line)
+    # # f.close()    
+    
+    return render_template("rank.html", rank = rank)
